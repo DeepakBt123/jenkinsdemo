@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class AppComponent implements OnInit, AfterViewInit{
   title = 'otpread';
-  mainObj:any={};
+  mainObj: any = { isWebOtpSupported: ('OTPCredential' in window) };
   constructor() { }
 
   ngOnInit(): void {
@@ -21,7 +21,6 @@ export class AppComponent implements OnInit, AfterViewInit{
   myOTP:any;
   ngAfterViewInit() {
     if ('OTPCredential' in window) {
-        this.mainObj.isWebOtpSupported = true;
         debugger;
         window.addEventListener('DOMContentLoaded', e => {
             debugger;
@@ -62,10 +61,8 @@ export class AppComponent implements OnInit, AfterViewInit{
             console.log(err);
         });
         });
-    }else{
-      // this.myOTP = 521456;
-      this.mainObj.isWebOtpSupported = false;
-      // alert('Web OTP API not supported, Please enter manually.');
+    } else {
+      // Web OTP API not supported; `isWebOtpSupported` was initialized already.
     }
   }
 }

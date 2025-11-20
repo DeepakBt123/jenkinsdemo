@@ -24,6 +24,7 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, otpread');
+    // Template doesn't contain an <h1> anymore; assert on visible demo label instead
+    expect(compiled.querySelector('.container')?.textContent).toContain('The simplest Web OTP API demo:');
   });
 });
