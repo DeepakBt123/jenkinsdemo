@@ -33,13 +33,14 @@ pipeline {
                             npm test
                             '''
                         }
-                    }  
-                    post {
+                         post {
                             always {
                             junit 'test-results/*.xml'
                             archiveArtifacts 'test-results/**'
                         }
                              }
+                    }  
+                   
         
                     stage('E2E') {
                         agent{
@@ -56,13 +57,14 @@ pipeline {
                             npx playwright test --reporte=html
                             '''
                         }
-                    }
+                    
                      post {
                                 always {
                                     junit 'test-results/*.xml'
                                     archiveArtifacts 'test-results/**'
                                 }
                             }
+                    }
                  }   
                }
               
